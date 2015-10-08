@@ -2,15 +2,16 @@
 
 <h1>Listing Posts</h1>
 
-<% @posts.each do |post| %>
+<% @posts.reverse.each do |post| %>
   <div class="post">
     <div class="title">
         <h3><%= link_to post.title, post %></h3>
     </div>
     <p><%= post.description[0...19] %>...</p>
   </div>
-  <% end %>
+<% end %>
 
 <br>
-
-<%= link_to 'New Post', new_post_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Post', new_post_path %>
+<% end %>
